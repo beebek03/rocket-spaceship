@@ -1,0 +1,73 @@
+#Homework Assignment 1
+#Bibek Twati
+#Python code to calculate Net Pay
+#09/06/2019
+    #Function to calculate Income Tax from Basic Pay
+def calIncomeTax(basicPay):
+    bp=float(basicPay)
+    if bp<=500:
+        it=0
+    elif bp>=501 or bp<=1000:
+        it=5
+    elif bp>=1001 or bp<=2000:
+        it=7.5
+    elif bp>=2001 or bp<=3500:
+        it=10
+    else:
+        it=12
+    return ((it/100)*bp)
+
+# Function to calculate Deduction Insurance from insurance type
+def calDeductionInsurance(insuranceType):
+    insType=str(insuranceType)
+    if insType.lower()=='single':
+        return 90
+    elif insType.lower()=='family':
+        return 460
+    elif insType.lower()=='employee couples':
+        return 230
+
+# Function to calculate Social Security Tax from Basic Pay
+def calSocialSecurityTax(bp):
+    sst=(0.03)*bp
+    return sst
+
+# Function to calculate Net Pay
+def calNetPay(amount,incTax,insDed,sst):
+    netPay=amount-incTax-insDed-sst
+    return netPay
+
+###############################################
+# Display Output
+
+# Display Income Tax
+print('What is your basic pay?')
+amount=float(input())
+incTax=calIncomeTax(amount)
+print()
+print('Your Basic Pay is $'+str(amount))
+print('Your Income Tax that will be deducted is $'+str(incTax))
+print()
+
+# Display Insurance Type
+print ('What is your insurance type? Options: SINGLE/FAMILY/EMPLOYEE COUPLES')
+itypes=str(input())
+insDed=calDeductionInsurance(itypes.lower())
+print()
+print('You selected '+itypes+'.')
+print('Your Insurance Deduction will be $'+str(insDed))
+print()
+
+# Display Social Security Tax
+sst=calSocialSecurityTax(float(amount))
+print ('Your Social Security Tax will be $'+str(sst))
+print()
+
+# Display Net Pay
+netP=calNetPay(amount,incTax,insDed,sst)
+print('Your Net Pay is $'+str(netP))
+
+
+
+
+
