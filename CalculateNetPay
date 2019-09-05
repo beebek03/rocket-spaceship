@@ -1,7 +1,6 @@
-#Homework Assignment 1
 #Bibek Twati
 #Python code to calculate Net Pay
-#09/06/2019
+
     #Function to calculate Income Tax from Basic Pay
 def calIncomeTax(basicPay):
     bp=float(basicPay)
